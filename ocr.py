@@ -199,19 +199,18 @@ with tab1:
         if session_state.data_uploaded:
             # Connect to the MySQL server
             connect = mysql.connector.connect(
-                host="localhost",
+                host="yourlocalhostname",
                 user="root",
-                password="root",
-                auth_plugin='mysql_native_password')
+                password="yourpassword")
 
             # Create a new database and use it
             mycursor = connect.cursor()
-            mycursor.execute("CREATE DATABASE IF NOT EXISTS bizcard_db")
+            mycursor.execute("CREATE DATABASE IF NOT EXISTS businessCardDB")
             mycursor.close()
-            connect.database = "bizcard_db"
+            connect.database = "businessCardDB"
 
             # Connect to the newly created database
-            engine = create_engine('mysql+mysqlconnector://root:root@localhost/bizcard_db', echo=False)
+            engine = create_engine('mysql+mysqlconnector://root:root@localhost/businessCardDB', echo=False)
 
             try:
                 # Use pandas to insert the DataFrame data into the SQL Database table
@@ -254,11 +253,10 @@ with tab2:
         try:
             # Connect to the database
             conn = mysql.connector.connect(
-                host="localhost",
+                host="yourlocalhostname",
                 user="root",
-                password="root",
-                auth_plugin='mysql_native_password',
-                database="bizcard_db")
+                password="yourpassword",
+                database="yourdatabasenameinSQL")
 
             cursor = conn.cursor()
 
@@ -343,11 +341,10 @@ with tab2:
         try:
             # Connect to the database
             conn_del = mysql.connector.connect(
-                host="localhost",
+                host="yourlocalhostname",
                 user="root",
-                password="root",
-                auth_plugin='mysql_native_password',
-                database="bizcard_db")
+                password="yourpassword",
+                database="yourdatabasenameinSQL")
 
             # Execute the query to retrieve the cardholder data
             cursor = conn_del.cursor()
